@@ -17,7 +17,7 @@ func (c *Client) QRCodeCreate(ctx context.Context, req QRCodeCreateBody) (*QRCod
 	if err := c.SendWithAuth(res, qrCode); err != nil {
 		return nil, err
 	}
-	qrCode.QRCodeUrl = fmt.Sprintf("https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=%s", qrCode.Ticket)
+	qrCode.QRCodeUrl = fmt.Sprintf(QRCodeUrl, qrCode.Ticket)
 
 	return qrCode, err
 }
